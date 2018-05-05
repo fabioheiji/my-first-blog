@@ -1,31 +1,13 @@
-<html>
-  <head>
-    <title>Ola blog</title>
-  </head>
-  <body>
-    <div>
-      <h1>Iniciando o meu primeiro BLOG!</h1>
-    </div>
+{% extends 'blog/base.html' %}
 
-    {% for post in posts %}
-      <div>
-        <p>published: {{ post.published_date}}</p>
-        <h1><a href="">{{ post.title}}</a></h1>
-        <p>{{ post.text|linebreaksbr}}</p>
+{% block content %}
+  {% for post in posts %}
+      <div class="post">
+          <div class="date">
+              <p>published: {{ post.published_date }}</p>
+          </div>
+          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+          <p>{{ post.text|linebreaksbr }}</p>
       </div>
-    {%endfor%}
-  
-    <div>
-      <p>testando uma lista de links logo abaixo:</p>
-      <ul>
-        <li><a href="http://www.uol.com.br">Site do UOL</a></li>
-        <li><a href="http://www.google.com.br">Site do Google</a></li>
-        <li><a href="http://www.g1.globo.com.br">Site do G1</a></li>
-      </ul>
-    </div>
-
-    {% for post in posts %}
-      <p>{{post}}</p>
-    {% endfor %}
-  </body>
-</html>
+  {% endfor %}
+{% endblock %}

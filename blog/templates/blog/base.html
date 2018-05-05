@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Ola blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  </head>
+  <body>
+    <div class="page_header">
+      <h1><a href="">Iniciando o meu primeiro BLOG!</a></h1>
+    </div>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+              {% block content %}
+              {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div>
+      <p>testando uma lista de links logo abaixo:</p>
+      <ul>
+        <li><a href="http://www.uol.com.br">Site do UOL</a></li>
+        <li><a href="http://www.google.com.br">Site do Google</a></li>
+        <li><a href="http://www.g1.globo.com.br">Site do G1</a></li>
+      </ul>
+    </div>
+
+    {% for post in posts %}
+      <p>{{post}}</p>
+    {% endfor %}
+  </body>
+</html>
